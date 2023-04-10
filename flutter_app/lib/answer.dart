@@ -3,9 +3,10 @@ import 'package:flutter/rendering.dart';
 
 class Answer extends StatelessWidget {
   final VoidCallback selectHandler;
+  final String answerText;
   final Key? key;
 
-  Answer(this.selectHandler, {this.key});
+  Answer(this.selectHandler, this.answerText, {this.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +14,7 @@ class Answer extends StatelessWidget {
       width: double.infinity,
       margin: const EdgeInsets.all(10),
       child: ElevatedButton(
-        child: Text("Answer 1"),
+        child: Text(answerText),
         onPressed: selectHandler,
       ),
     );
