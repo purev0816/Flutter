@@ -17,25 +17,49 @@ class _MyAppState extends State<MyApp> {
   final questions = [
     {
       'questionText': 'What is your favorite color?',
-      'answers': ['Black', 'White', 'Red', 'Green', 'Purple'],
+      'answers': [
+        {'text': 'Black', 'score': 10},
+        {'text': 'White', 'score': 9},
+        {'text': 'Red', 'score': 5},
+        {'text': 'Green', 'score': 3},
+        {'text': 'Purple', 'score': 5},
+      ],
     },
     {
       'questionText': 'What is your favorite car?',
-      'answers': ['Bugatti', 'Toyota', 'Lexus', 'Porsche', 'Mercedes Benz'],
-    },
-    {
-      'questionText': 'What is your favorite movie?',
-      'answers': ['Spider Man', 'Thor', 'Marvel', 'Harry Potter', 'GOT'],
+      'answers': [
+        {'text': 'Bugatti', 'score': 10},
+        {'text': 'Toyota', 'score': 6},
+        {'text': 'Lexus', 'score': 7},
+        {'text': 'Porsche', 'score': 9},
+        {'text': 'Mercedes Benz', 'score': 8},
+      ],
     },
     {
       'questionText': 'What is your favorite programming language?',
-      'answers': ['Dart', 'Golang', 'JavaScript', 'C++', 'Java'],
+      'answers': [
+        {'text': 'Dart', 'score': 10},
+        {'text': 'Golang', 'score': 6},
+        {'text': 'JavaScript', 'score': 7},
+        {'text': 'Java', 'score': 9},
+        {'text': 'C++', 'score': 8},
+      ],
     }
   ];
 
   var _questionIndex = 0;
+  int _totalScore = 0;
 
-  void _questionAnswer() {
+  void resetQuiz() {
+    setState(() {
+      var _questionIndex = 0;
+      int _totalScore = 0;
+    });
+  }
+
+  void _questionAnswer(int score) {
+    _totalScore += score;
+
     setState(() {
       _questionIndex++;
     });
@@ -55,7 +79,7 @@ class _MyAppState extends State<MyApp> {
                 questions: questions,
                 questionIndex: _questionIndex,
               )
-            : Result(),
+            : Result(_totalScore, resetQuiz),
       ),
     );
   }
