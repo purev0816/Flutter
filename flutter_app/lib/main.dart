@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import './question.dart';
 import './answer.dart';
 
-var questions = [
+final questions = [
   {
     'questionText': 'What is your favorite color?',
     'answers': ['Black', 'White', 'Red', 'Green', 'Purple'],
